@@ -115,12 +115,9 @@ class Text_preprocessing(object):
     
     # get_sentence length
     def get_sentence_length(self,df_):
-        
-        sentences = list(df_['text'])
 
-    
         lenths = []
-        
+        sentences = list(df_['text'])
         for sentence in tqdm(sentences):
             if isinstance(sentence,list):
                 lenths.append(len(sentence))
@@ -306,14 +303,4 @@ class Text_preprocessing(object):
         pd_data.columns  = mlb.classes_
         pd_data['text']  = sentences
         return pd_data
-    
-
-    
-
-    
-
-        
-
-
-    
 
