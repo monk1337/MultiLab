@@ -24,16 +24,16 @@ import os
 class Text_preprocessing(object):
 
 
-    def __init__(self, dataset, dataset_type = None):
+    def __init__(self):
 
-        self.df             = dataset
-        self.dataset_type   = dataset_type
         self.stop_words     = set(stopwords.words('english'))
         self.re_stop_words  = re.compile(r"\b(" + "|".join(stop_words) + ")\\W", re.I)
         self.stemmer        = SnowballStemmer("english")
     
     #return sentences and labels 
-    def initial_preprocess(self, stop_words = False, stem_ = False, chunk_value = False):
+    def initial_preprocess(self, df_, stop_words = False, stem_ = False, chunk_value = False):
+
+        self.df              = df_
         
         self.df['text']      = self.df['text'].str.lower()
         self.df['text']      = self.df['text'].apply(self.remove_pun)
