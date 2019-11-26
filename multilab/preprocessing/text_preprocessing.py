@@ -76,9 +76,6 @@ class Text_preprocessing(object):
         elif no_of_samples:
             sample_df = df.sample(n = int(no_of_samples))
         return sample_df.reset_index(drop=True)
-
-    def split_dataframe():
-        pass
     
     #remove html 
     def clean_html(self,sentence):
@@ -265,15 +262,9 @@ class Text_preprocessing(object):
 
     
     # split the dataset
-    def split_dataset(self, df_, test_size = 0.3 , output_type = 'dataframe'):
-        if output_type == 'dataframe':
-            train, test = train_test_split(df_, test_size= float(test_size))
-            return train, test
-        else:
-            all_sentences = list(df_['text'])
-            labels        = np.array(df_.drop('text', 1))
-            X_train, X_test, y_train, y_test = train_test_split(all_sentences,labels test_size= float(test_size))
-            return X_train, X_test, y_train, y_test
+    def split_dataset(self, sentences, labels, test_size = 0.3 ):
+        X_train, X_test, y_train, y_test = train_test_split(sentences, labels, test_size= float(test_size))
+        return X_train, X_test, y_train, y_test
 
 
 
@@ -287,7 +278,7 @@ class Text_preprocessing(object):
         path - path of glove embedding
         """
 
-        load_embeddings = loadGloveModel(path)
+        load_embeddings = self.loadGloveModel(path)
         vocab   = sorted(dict(vocab).items(), key=operator.itemgetter(1))
             
         encoded_vocab    = []
