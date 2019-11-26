@@ -11,6 +11,7 @@ from sklearn.preprocessing import MultiLabelBinarizer
 
 import numpy as np
 from sklearn.model_selection import train_test_split
+
 from sklearn.preprocessing import MultiLabelBinarizer
 from sklearn.feature_extraction.text import TfidfVectorizer
 
@@ -260,6 +261,22 @@ class Text_preprocessing(object):
         x_train = vectorizer.transform(sentences)
         
         return x_train, labels
+    
+
+    
+    # split the dataset
+    def split_dataset(self, df_, test_size = 0.3 , output_type = 'dataframe'):
+        if output_type == 'dataframe':
+            train, test = train_test_split(df_, test_size= float(test_size))
+            return train, test
+        else:
+            all_sentences = list(df_['text'])
+            labels        = np.array(df_.drop('text', 1))
+            X_train, X_test, y_train, y_test = train_test_split(all_sentences,labels test_size= float(test_size))
+            return X_train, X_test, y_train, y_test
+
+
+
 
     def vocab_embedding(self, vocab, path):
 
