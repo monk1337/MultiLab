@@ -38,6 +38,9 @@ class Text_preprocessing(object):
         self.stem_           = stem_
         self.stop_w          = stop_w
         
+        # todo : progress bar for pandas internal process
+        # not helpful https://stackoverflow.com/questions/18603270/progress-indicator-during-pandas-operations
+
         print('lower_case done')
         self.df['text']      = self.df['text'].str.lower()
         self.df['text']      = self.df['text'].apply(self.remove_pun)
