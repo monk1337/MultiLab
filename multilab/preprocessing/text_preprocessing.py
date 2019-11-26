@@ -41,10 +41,14 @@ class Text_preprocessing(object):
         print('lower_case done')
         self.df['text']      = self.df['text'].str.lower()
         self.df['text']      = self.df['text'].apply(self.remove_pun)
+        tqdm.pandas()
+
         print('punctuation removed')
 
         self.df['text']      = self.df['text'].apply(self.keep_alpha)
         self.df['text']      = self.df['text'].apply(self.clean_html)
+        tqdm.pandas()
+
         print('text cleaning done')
         if self.stop_w:
             self.df['text'] = self.df['text'].apply(self.removeStopWords)
@@ -140,7 +144,6 @@ class Text_preprocessing(object):
         for column in df_.columns:
             get_frequency[column]= (df_[column]==1).sum()
         sorted_long   = sorted(get_frequency.items(), key=operator.itemgetter(1),reverse=True)
-        raw_frequency = sorted_long
         
         if freq_Value:
             sorted_long = sorted([col for col in sorted_long if int(col[1])>= freq_Value])
@@ -253,7 +256,7 @@ class Text_preprocessing(object):
         vectorizer.fit(sentences)
         x_train = vectorizer.transform(sentences)
         
-        return sentences, labels
+        return x_train, labels
 
     def vocab_embedding(self, vocab, path):
 
