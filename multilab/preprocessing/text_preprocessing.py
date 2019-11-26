@@ -27,7 +27,7 @@ class Text_preprocessing(object):
     def __init__(self):
 
         self.stop_words     = set(stopwords.words('english'))
-        self.re_stop_words  = re.compile(r"\b(" + "|".join(stop_words) + ")\\W", re.I)
+        self.re_stop_words  = re.compile(r"\b(" + "|".join(self.stop_words) + ")\\W", re.I)
         self.stemmer        = SnowballStemmer("english")
     
     #return sentences and labels 
