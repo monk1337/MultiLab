@@ -11,6 +11,8 @@ from sklearn.metrics import f1_score
 from skmultilearn.problem_transform import BinaryRelevance
 from sklearn.naive_bayes import GaussianNB
 
+#todo : store the models weights and restore with predict function 
+# currently just showing the test accuracy 
 
 class Base_models(object):
     

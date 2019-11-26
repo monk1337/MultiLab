@@ -1,1 +1,1 @@
-from .base_models.bilstm import Bilstm
+from .base_models.base_model import Base_models
