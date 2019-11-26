@@ -31,21 +31,27 @@ class Text_preprocessing(object):
         self.stemmer        = SnowballStemmer("english")
     
     #return sentences and labels 
-    def initial_preprocess(self, df_, stop_words = False, stem_ = False, chunk_value = False):
+    def initial_preprocess(self, df_, stop_w = False, stem_ = False, chunk_value = False):
 
         self.df              = df_
+        self.chunk_value     = chunk_value
+        self.stem_           = stem_
+        self.stop_w          = stop_w
         
+        print('lower_case done')
         self.df['text']      = self.df['text'].str.lower()
         self.df['text']      = self.df['text'].apply(self.remove_pun)
+        print('punctuation removed')
+
         self.df['text']      = self.df['text'].apply(self.keep_alpha)
         self.df['text']      = self.df['text'].apply(self.clean_html)
-
-        if stop_words:
+        print('text cleaning done')
+        if self.stop_w:
             self.df['text'] = self.df['text'].apply(self.removeStopWords)
-        elif stem_:
+        elif self.stem_:
             self.df['text'] = self.df['text'].apply(self.stemming)
-        elif chunk_value:
-            self.df['text'] = self.df['text'].apply(self.chunk, chunk_value)
+        elif self.chunk_value:
+            self.df['text'] = self.df['text'].apply(self.chunk, self.chunk_value)
         
         return self.df
 
@@ -119,7 +125,7 @@ class Text_preprocessing(object):
                                                 np.min(np.array(lenths)), 
                                                 np.average(np.array(lenths)))
     
-    def chunk(self,sentence,value):
+    def chunk(self, sentence, value):
         return " ".join(sentence.split()[:value])
     
 
