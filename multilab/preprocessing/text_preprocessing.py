@@ -51,7 +51,7 @@ class Text_preprocessing(object):
         elif self.stem_:
             self.df['text'] = self.df['text'].apply(self.stemming)
         elif self.chunk_value:
-            self.df['text'] = self.df['text'].apply(self.chunk, self.chunk_value)
+            self.df['text'] = self.df['text'].apply(self.chunk, value = self.chunk_value)
         
         return self.df
 
