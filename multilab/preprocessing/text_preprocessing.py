@@ -103,12 +103,9 @@ class Text_preprocessing(object):
     
     
     # get_sentence length
-    def get_sentence_length(self, df_data = None):
-
-        if df_data:
-            sentences = list(df_data['text'])
-        else:
-            sentences = list(self.df['text'])
+    def get_sentence_length(self,df_):
+        
+        sentences = list(self.df_['text'])
 
     
         lenths = []
