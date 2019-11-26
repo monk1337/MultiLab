@@ -32,3 +32,4 @@ output :
 {'accuracy': 0.4074074074074074, 'f1_score': 0.39285714285714285}
 {'accuracy': 0.2962962962962963, 'f1_score': 0.3902439024390244}
 ```
+# adding more models work in progress..
