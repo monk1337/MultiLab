@@ -1,0 +1,2 @@
+def Bilstm():
+    print("working")
