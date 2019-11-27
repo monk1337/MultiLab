@@ -16,13 +16,10 @@ Loading Models
 
 
 ```python
-from multilab.models import Base_models
+from multilab.models import BinaryRe
 
-Bm = Base_models(X_train, y_train, X_test,y_test)
-print(Bm.BinaryRe())
-print(Bm.classfier_chain())
-print(Bm.powerset())
-print(Bm.mlknn())
+Bm = BinaryRe(X_train, y_train, X_test,y_test)
+print(Bm.train())
 ```
 
 output :
@@ -30,8 +27,20 @@ output :
 ```python
 
 {'accuracy': 0.4074074074074074, 'f1_score': 0.4395604395604396}
-{'accuracy': 0.4074074074074074, 'f1_score': 0.39285714285714285}
-{'accuracy': 0.4074074074074074, 'f1_score': 0.39285714285714285}
-{'accuracy': 0.2962962962962963, 'f1_score': 0.3902439024390244}
 ```
+
+```python
+from multilab.models import Classfierchains
+
+Cc = Classfierchains(X_train, y_train, X_test,y_test)
+print(Cc.train())
+```
+
+output :
+
+```python
+
+{'accuracy': 0.5185185185185185, 'f1_score': 0.5357142857142857}
+```
+
 # adding more models work in progress..
