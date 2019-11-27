@@ -31,7 +31,8 @@ class Bilstm(object):
                          'epoch'                      : 1,
                          'batch_size'                 : 128,
                          'result_path'                : '/Users/monk/Desktop',
-                         'last_output'                : False
+                         'last_output'                : False,
+                         'train_embedding'            : True
                         }
         
         if configuration:
