@@ -30,7 +30,8 @@ class Elmo(object):
                         }
                 
             
-        
+        if configuration:
+            self.old_configuration.update(configuration)
     
     def default_configuration(self):
         
