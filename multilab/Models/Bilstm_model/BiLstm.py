@@ -177,7 +177,7 @@ class Bilstm(object):
 
                 val_data = self.evaluate_(model, i, batch_size = 100)
                 print("validation_acc",val_data)
-                with open(atr(self.old_configuration['result_path']) + '/result.txt', 'a') as f:
+                with open(str(self.old_configuration['result_path']) + '/result.txt', 'a') as f:
                     f.write(str({'test_accuracy':  val_data}) + '\n')
 
     def train(self):
