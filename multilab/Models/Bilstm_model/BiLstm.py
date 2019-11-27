@@ -22,7 +22,7 @@ class Bilstm(object):
         self.y_val   = y_test
         
         self.old_configuration = {
-                         'vocab_size'                 : 2000,
+                         'vocab_size'                 : 3000,
                          'no_of_labels'               : 9,
                          'rnn_units'                  : 256, 
                          'word_embedding_dim'         : 300, 
