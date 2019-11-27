@@ -99,13 +99,13 @@ class Bilstm_model(object):
         
         # dense layer with xavier weights
         fc_layer = tf.get_variable(name='fully_connected',
-                                   shape=[2*rnn_units, self.targets.shape[1]],
+                                   shape=[2*rnn_units, 9],
                                    dtype=tf.float32,
                                    initializer=tf.contrib.layers.xavier_initializer())
         
         # bias 
         bias    = tf.get_variable(name='bias',
-                                   shape=[self.targets.shape[1]],
+                                   shape=[9],
                                    dtype=tf.float32,
                                    initializer=tf.contrib.layers.xavier_initializer())
         
