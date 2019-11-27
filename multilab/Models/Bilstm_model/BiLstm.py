@@ -4,7 +4,7 @@ import tensorflow as tf
 from tqdm import tqdm
 from tqdm import trange
 
-from hamming import hamming_score
+from .hamming import hamming_score
 from sklearn.metrics import f1_score
 from bilstm_model import Bilstm_model
 import numpy as np
