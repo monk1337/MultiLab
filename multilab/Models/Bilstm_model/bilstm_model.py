@@ -48,7 +48,7 @@ class Bilstm_model(object):
             #use pretrained_ embedding
             word_embedding             = tf.get_variable(name="word_embedding_", 
                                          shape=[pretrained_embedding_matrix.shape[0],pretrained_embedding_matrix.shape[1]],
-                                         initializer = tf.contrib.layers.xavier_initializer()), 
+                                         initializer = tf.contrib.layers.xavier_initializer(),
                                          trainable = train_embedding ,dtype=tf.float32)
             
         
