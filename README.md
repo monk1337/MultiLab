@@ -29,4 +29,38 @@ output :
 {'accuracy': 0.4074074074074074, 'f1_score': 0.4395604395604396}
 ```
 
-# adding more models work in progress..
+Loading Bilstm model
+
+```python
+from multilab.models import Bilstm
+
+
+config = {
+            'vocab_size'                 : 7000,
+            'no_of_labels'               : 9,
+            'rnn_units'                  : 256, 
+            'word_embedding_dim'         : 300, 
+            'learning_rate'              : 0.001, 
+            'pretrained_embedding_matrix': None,
+            'dropout'                    : 0.2,
+            'epoch'                      : 5,
+            'batch_size'                 : 128,
+            'result_path'                : '/Users/aaditya/Desktop',
+            'last_output'                : False,
+            'train_embedding'            : True
+        }
+
+
+bl = Bilstm(X_train, y_train, X_test,  y_test, config)
+bl.train()
+```
+
+output
+
+```python
+validation_acc {'subset_accuracy': 0.45166666666666666, 'hamming_score': 0.4601111111111112, 'hamming_loss': 0.1285185185185185, 'micro_ac': 0.4490395710185522, 'weight_ac': 0.2830056188426279, 'epoch': 0}
+```
+
+
+
+##### adding more models work in progress..
