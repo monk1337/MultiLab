@@ -9,6 +9,7 @@ class Bilstm_model(object):
                  vocab_size,
                  rnn_units,
                  word_embedding_dim,
+                 no_of_labels,
                  learning_rate               = 0.001, 
                  pretrained_embedding_matrix = None,
                  train_embedding             = True,
@@ -48,7 +49,7 @@ class Bilstm_model(object):
             #use pretrained_ embedding
             word_embedding             = tf.get_variable(name="word_embedding_", 
                                          shape=[pretrained_embedding_matrix.shape[0],pretrained_embedding_matrix.shape[1]],
-                                         initializer = tf.contrib.layers.xavier_initializer(),
+                                         initializer = tf.constant_initializer(np.array(pretrained_embedding_matrix)), 
                                          trainable = train_embedding ,dtype=tf.float32)
             
         
@@ -99,13 +100,13 @@ class Bilstm_model(object):
         
         # dense layer with xavier weights
         fc_layer = tf.get_variable(name='fully_connected',
-                                   shape=[2*rnn_units, 9],
+                                   shape=[2*rnn_units, no_of_labels],
                                    dtype=tf.float32,
                                    initializer=tf.contrib.layers.xavier_initializer())
         
         # bias 
         bias    = tf.get_variable(name='bias',
-                                   shape=[9],
+                                   shape=[no_of_labels],
                                    dtype=tf.float32,
                                    initializer=tf.contrib.layers.xavier_initializer())
         

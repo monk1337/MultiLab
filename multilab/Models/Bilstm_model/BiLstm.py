@@ -22,7 +22,8 @@ class Bilstm(object):
         self.y_val   = y_test
         
         self.old_configuration = {
-                         'vocab_size'                 : 2000, 
+                         'vocab_size'                 : 2000,
+                         'no_of_labels'               : 9
                          'rnn_units'                  : 256, 
                          'word_embedding_dim'         : 300, 
                          'learning_rate'              : 0.001, 
@@ -181,6 +182,7 @@ class Bilstm(object):
 
     def train(self):
         model = Bilstm_model(vocab_size            =   int(self.old_configuration['vocab_size']),
+                       no_of_labels                =   int(self.old_configuration['no_of_labels']),
                        rnn_units                   =   int(self.old_configuration['rnn_units']), 
                        word_embedding_dim          =   int(self.old_configuration['word_embedding_dim']),
                        pretrained_embedding_matrix =   self.embedding_mat,
