@@ -1,7 +1,8 @@
 import tensorflow as tf
 import os
 import numpy as np
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+from tensorflow.python.util import deprecation
+deprecation._PRINT_DEPRECATION_WARNINGS = False
 
 
 class Bilstm_model(object):
