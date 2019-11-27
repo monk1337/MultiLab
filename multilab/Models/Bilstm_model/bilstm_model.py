@@ -2,8 +2,6 @@ import tensorflow as tf
 import numpy as np
 
 
-
-
 class Bilstm_model(object):
     
     def __init__(
@@ -11,7 +9,6 @@ class Bilstm_model(object):
                  vocab_size,
                  rnn_units,
                  word_embedding_dim,
-                 no_of_labels,
                  learning_rate               = 0.001, 
                  pretrained_embedding_matrix = None,
                  train_embedding             = True,
@@ -102,13 +99,13 @@ class Bilstm_model(object):
         
         # dense layer with xavier weights
         fc_layer = tf.get_variable(name='fully_connected',
-                                   shape=[2*rnn_units, no_of_labels],
+                                   shape=[2*rnn_units, self.targets.shape[1]],
                                    dtype=tf.float32,
                                    initializer=tf.contrib.layers.xavier_initializer())
         
         # bias 
         bias    = tf.get_variable(name='bias',
-                                   shape=[no_of_labels],
+                                   shape=[self.targets.shape[1]],
                                    dtype=tf.float32,
                                    initializer=tf.contrib.layers.xavier_initializer())
         
