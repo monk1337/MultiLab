@@ -52,7 +52,8 @@ class Bilstm(object):
     def default_configuration(self):
         
         default_conf = {
-                        'vocab_size'      : 'vocab_size of corpus', 
+                        'vocab_size'      : 'vocab_size of corpus',
+                        'no_of_labels'    : 'total number of labels',
                         'rnn_unit'        : 'bi-directional_rnn units', 
                         'embedding_dim'   : 'word_embedding_dim', 
                         'learning rate'   : 'learning rate of model', 
