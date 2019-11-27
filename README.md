@@ -1,5 +1,5 @@
-<h1 align="center"> ## MultiLab</h1>
-<p align="center">A framework for Multi-label classification, Classical machine learning models to state of art deep learning models for multi label classification, preprocessing Multi-label datasets and load benchmark multi-label datasets</p>
+<h1 align="center"> MultiLab</h1>
+<p align="center">A framework for Multi-label classification, Classical machine learning models to state of art deep learning models for multi label classification, preprocessing Multi-label datasets and load benchmark multi-label datasets, metrices for accuracy calculation </p>
 
 
 Now you can preprocess multilabel dataset simply as follows:
