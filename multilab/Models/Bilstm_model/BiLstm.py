@@ -23,7 +23,7 @@ class Bilstm(object):
         
         self.old_configuration = {
                          'vocab_size'                 : 2000,
-                         'no_of_labels'               : 9
+                         'no_of_labels'               : 9,
                          'rnn_units'                  : 256, 
                          'word_embedding_dim'         : 300, 
                          'learning_rate'              : 0.001, 
