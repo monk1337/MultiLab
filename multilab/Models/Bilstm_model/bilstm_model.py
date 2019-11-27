@@ -1,7 +1,7 @@
 import tensorflow as tf
 import os
 import numpy as np
-from tensorflow.python.util import deprecation
+from tf.python.util import deprecation
 deprecation._PRINT_DEPRECATION_WARNINGS = False
 
 
