@@ -36,20 +36,20 @@ class Bilstm_model(object):
         
         # initialize trained embedding 
         
-        if pretrained_embedding_matrix:
-            
-            word_embedding             = tf.get_variable(name="word_embedding_", 
-                                         shape=[pretrained_embedding_matrix.shape[0],pretrained_embedding_matrix.shape[1]],
-                                         initializer=tf.constant_initializer(np.array(pretrained_embedding_matrix)), 
-                                         trainable = train_embedding ,dtype=tf.float32)
-        # or use random embedding
-        
-        else:
-            
+        if pretrained_embedding_matrix is None:
+
+            # use random embedding
             word_embedding            = tf.get_variable(name='word_embedding_',
                                          shape=[vocab_size, word_embedding_dim],
                                          dtype=tf.float32,
                                          initializer = tf.contrib.layers.xavier_initializer())
+            
+        else:
+            #use pretrained_ embedding
+            word_embedding             = tf.get_variable(name="word_embedding_", 
+                                         shape=[pretrained_embedding_matrix.shape[0],pretrained_embedding_matrix.shape[1]],
+                                         initializer = tf.constant_initializer(np.array(pretrained_embedding_matrix)), 
+                                         trainable = train_embedding ,dtype=tf.float32)
             
         
         
