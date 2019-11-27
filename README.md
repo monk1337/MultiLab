@@ -34,7 +34,6 @@ Loading Bilstm model
 ```python
 from multilab.models import Bilstm
 
-```yaml
 
 config = {
             'vocab_size'                 : 7000,
