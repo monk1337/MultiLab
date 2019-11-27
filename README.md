@@ -6,6 +6,7 @@ You can preprocess multilabel dataset simply as follows:
 ```python
 
 from multilab.preprocess import Text_preprocessing
+
 tp = Text_preprocessing()
 preprocessded_dataset = tp.initial_preprocess(dataframe, chunk_value = 5)
 
@@ -16,6 +17,7 @@ Loading Models
 
 ```python
 from multilab.models import Base_models
+
 Bm = Base_models(X_train, y_train, X_test,y_test)
 print(Bm.BinaryRe())
 print(Bm.classfier_chain())
