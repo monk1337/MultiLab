@@ -26,6 +26,7 @@ class Elmo(object):
                          'learning_rate'              : 0.001,
                          'epoch'                      : 1,
                          'batch_size'                 : 128,
+                         'dropout'                    : 0.2
                          'result_path'                : '/Users/monk/Desktop'
                         }
                 
@@ -39,7 +40,8 @@ class Elmo(object):
                         'no_of_labels'    : 'total number of labels',
                         'learning rate'   : 'learning rate of model',
                         'epoch'           : 'epoch for training',
-                        'result_path'     : 'path for result.txt file'
+                        'result_path'     : 'path for result.txt file',
+                        'dropout'         : 'dropout'
                        }
         return default_conf
     
@@ -86,7 +88,8 @@ class Elmo(object):
             labels_data    = data_g['labels']
 
             network_out, targe = sess.run([model.predictions,model.targets], feed_dict={model.placeholders['sentence']: sentences_data,
-                                                                                        model.placeholders['labels']: labels_data})
+                                                                                        model.placeholders['labels']: labels_data, 
+                                                                                        model.placeholders['drop']: 0.0})
 
             h_s     = hamming_score(targe, network_out)
 
@@ -137,7 +140,8 @@ class Elmo(object):
 
                     network_out, train, targe, losss  = sess.run([model.predictions, model.optimizer, model.targets,model.loss],
                                               feed_dict={model.placeholders['sentence']: sentences_data,
-                                                         model.placeholders['labels']: labels_data})
+                                                         model.placeholders['labels']: labels_data,
+                                                         model.placeholders['drop']: self.old_configuration['dropout']})
 
                     t.set_description("epoch {},  iteration {},  F1_score {},  loss {}".format(i,
                                                                                            j,
