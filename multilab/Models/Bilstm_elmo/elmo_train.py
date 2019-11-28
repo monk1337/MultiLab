@@ -26,7 +26,8 @@ class Elmo(object):
                          'learning_rate'              : 0.001,
                          'epoch'                      : 1,
                          'batch_size'                 : 128,
-                         'dropout'                    : 0.2
+                         'dropout'                    : 0.2,
+                         'model_type'                 : 'base',
                          'result_path'                : '/Users/monk/Desktop'
                         }
                 
@@ -161,7 +162,8 @@ class Elmo(object):
         model = Elmo_model(
             
                         no_of_labels                =   int(self.old_configuration['no_of_labels']),
-                       learning_rate               =   float(self.old_configuration['learning_rate'])
+                       learning_rate                =   float(self.old_configuration['learning_rate'],
+                       model_                      =    str(self.old_configuration['model_type']))
                        )
 
         self.train_model(model)
