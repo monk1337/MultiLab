@@ -17,7 +17,7 @@ deprecation._PER_MODULE_WARNING_LIMIT = 0
 
 class Elmo_model(object):
     
-    def __init__(self, no_of_labels, learning_rate, model_ = 'base'):
+    def __init__(self, no_of_labels, learning_rate, train_elmo = True , model_ = 'base'):
 
         tf.reset_default_graph()
 
@@ -33,7 +33,7 @@ class Elmo_model(object):
 
         self.placeholders     = {'sentence': sentences, 'labels': self.targets, 'drop': keep_prob}
 
-        module                = hub.Module('https://tfhub.dev/google/elmo/2', trainable = True)
+        module                = hub.Module('https://tfhub.dev/google/elmo/2', trainable = train_elmo)
         embeddings            = module(dict(text=sentences))
 
         # output [None, 1024]

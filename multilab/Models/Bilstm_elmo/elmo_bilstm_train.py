@@ -6,13 +6,15 @@ from tqdm import trange
 
 from .hamming import hamming_score
 from sklearn.metrics import f1_score
-from .elmo_model import Elmo_model
+from .elmo_bilstm import BiElmo_model
 import numpy as np
 import pickle as pk
 
 
 
-class Elmo(object):
+class BiLstm_Elmo(object):
+
+
     
     def __init__(self, X_train, y_train, X_test, y_test, configuration = None):
         
@@ -24,6 +26,8 @@ class Elmo(object):
         self.old_configuration = {
                          'no_of_labels'               : 9,
                          'learning_rate'              : 0.001,
+                         'rnn_units'                  : 256,
+                         'last_output'                : False,
                          'epoch'                      : 1,
                          'batch_size'                 : 128,
                          'dropout'                    : 0.2,
@@ -160,12 +164,13 @@ class Elmo(object):
                     f.write(str({'test_accuracy':  val_data}) + '\n')
 
     def train(self):
-        model = Elmo_model(
+        model = BiElmo_model(
             
-                        no_of_labels                =   int(self.old_configuration['no_of_labels']),
+                       no_of_labels                =   int(self.old_configuration['no_of_labels']),
                        learning_rate                =   float(self.old_configuration['learning_rate']),
+                       rnn_units                    =   self.old_configuration['rnn_units'],
                        train_elmo                   =   self.old_configuration['train_elmo'],
-                       model_                       =    str(self.old_configuration['model_type']))
+                       last_output                  =   self.old_configuration['last_output'])
                        
 
         self.train_model(model)
