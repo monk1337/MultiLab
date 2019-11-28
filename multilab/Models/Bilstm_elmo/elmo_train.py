@@ -162,7 +162,7 @@ class Elmo(object):
         model = Elmo_model(
             
                         no_of_labels                =   int(self.old_configuration['no_of_labels']),
-                       learning_rate                =   float(self.old_configuration['learning_rate'],
+                       learning_rate                =   float(self.old_configuration['learning_rate']),
                        model_                      =    str(self.old_configuration['model_type']))
                        )
 
