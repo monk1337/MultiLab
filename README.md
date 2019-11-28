@@ -18,7 +18,7 @@ preprocessded_dataset = tp.initial_preprocess(dataframe, chunk_value = 5)
 ```python
 from multilab.models import BinaryRe
 
-Bm = BinaryRe(X_train, y_train, X_test,y_test)
+Bm = BinaryRe(x_train, y_train, x_test,y_test)
 print(Bm.train())
 ```
 
@@ -51,7 +51,7 @@ config = {
         }
 
 
-bl = Bilstm(X_train, y_train, X_test,  y_test, config)
+bl = Bilstm(x_train, y_train, x_test,y_test, config)
 bl.train()
 ```
 
@@ -79,7 +79,7 @@ config = {
                         }
 
 
-elmo_model = Elmo(X_train, y_train, X_test,  y_test, config)
+elmo_model = Elmo(x_train, y_train, x_test,y_test, config)
 elmo_model.train()
 
 ```
