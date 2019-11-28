@@ -12,13 +12,13 @@ preprocessded_dataset = tp.initial_preprocess(dataframe, chunk_value = 5)
 
 ```
 
-Loading Models
+### Loading traditional Models
 
 
 ```python
 from multilab.models import BinaryRe
 
-Bm = BinaryRe(X_train, y_train, X_test,y_test)
+Bm = BinaryRe(x_train, y_train, x_test,y_test)
 print(Bm.train())
 ```
 
@@ -29,7 +29,7 @@ output :
 {'accuracy': 0.4074074074074074, 'f1_score': 0.4395604395604396}
 ```
 
-Loading Bilstm model
+### Loading Bilstm model
 
 ```python
 from multilab.models import Bilstm
@@ -51,7 +51,7 @@ config = {
         }
 
 
-bl = Bilstm(X_train, y_train, X_test,  y_test, config)
+bl = Bilstm(x_train, y_train, x_test,y_test, config)
 bl.train()
 ```
 
@@ -63,4 +63,33 @@ validation_acc {'subset_accuracy': 0.45166666666666666, 'hamming_score': 0.46011
 
 
 
-##### adding more models work in progress..
+
+### Loading Elmo model
+
+```python
+from multilab.models import Elmo
+
+config = {
+                         'no_of_labels'               : 9,
+                         'learning_rate'              : 0.001,
+                         'epoch'                      : 5,
+                         'batch_size'                 : 128,
+                         'model_type'                 : 'base',
+                         'result_path'                : '.'
+                        }
+
+
+elmo_model = Elmo(x_train, y_train, x_test,y_test, config)
+elmo_model.train()
+
+```
+
+output
+
+```python
+validation_acc {'subset_accuracy': 0.5966666666666666, 'hamming_score': 0.6, 'hamming_loss': 0.05907407407407408, 'micro_ac': 0.6943641132818982, 'weight_ac': 0.5731481624223015, 'epoch': 0}
+```
+
+
+
+##### adding more models, work in progress..
