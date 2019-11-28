@@ -12,7 +12,7 @@ preprocessded_dataset = tp.initial_preprocess(dataframe, chunk_value = 5)
 
 ```
 
-##### Loading traditional Models
+### Loading traditional Models
 
 
 ```python
@@ -29,7 +29,7 @@ output :
 {'accuracy': 0.4074074074074074, 'f1_score': 0.4395604395604396}
 ```
 
-##### Loading Bilstm model
+### Loading Bilstm model
 
 ```python
 from multilab.models import Bilstm
@@ -64,7 +64,7 @@ validation_acc {'subset_accuracy': 0.45166666666666666, 'hamming_score': 0.46011
 
 
 
-##### Loading Elmo model
+### Loading Elmo model
 
 ```python
 from multilab.models import Elmo
