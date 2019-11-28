@@ -17,7 +17,7 @@ deprecation._PER_MODULE_WARNING_LIMIT = 0
 
 class Elmo_model(object):
     
-    def __init__(self, no_of_labels, learning_rate, model_ = 1):
+    def __init__(self, no_of_labels, learning_rate, model_ = 'base'):
 
         tf.reset_default_graph()
 
@@ -56,7 +56,7 @@ class Elmo_model(object):
             #final output 
             self.logits = tf.add(tf.matmul(embeddings,fc_layer),bias)
 
-        elif model_ == 'two layer':
+        elif model_ == 'two_layer':
 
             fc_layer_first = tf.get_variable(name='fully_connected_first',
                                     shape=[1024, 256],
@@ -146,7 +146,7 @@ class Elmo_model(object):
                                                 fc_layer_final),
                                                 bias_final))
 
-        elif model_ == 'three layer':
+        elif model_ == 'three_layer':
 
             fc_layer_first = tf.get_variable(name='fully_connected_first',
                                     shape=[1024, 512],
