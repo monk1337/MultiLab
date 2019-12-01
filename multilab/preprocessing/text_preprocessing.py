@@ -318,12 +318,21 @@ class Text_preprocessing(object):
             else:
                 token = sentence
             
-            if len(token) < sequene_len:
+            if len(token) < sequence_len:
                 actual_length.append(len(token))
-                token = token + [''] * (sequene_len-len(token))
+                token = token + [''] * (sequence_len-len(token))
             else:
                 actual_length.append(len(token))
             
             padded_sentences.append(token)
         return padded_sentences, actual_length
+
+    # actual length of padded sequences
+    def actual_len(self, padded_list):
+    
+        actual_ = []
+        for sequence in padded_list:
+            actual = [sub_ for sub_ in sequence if sub_!='']
+            actual_.append(len(actual))
+        return actual_
 
