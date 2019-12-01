@@ -41,7 +41,6 @@ class Elmo_Word_Model(object):
                          'output_type'                : 'state_output',
                          'train_elmo'                 : True,
                          'result_path'                : '/Users/monk/Desktop',
-                         'max_sentence_words'         : 150
                         }
                 
             
