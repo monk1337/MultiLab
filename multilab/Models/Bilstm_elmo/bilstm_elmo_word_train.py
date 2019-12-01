@@ -7,13 +7,13 @@ from tqdm import trange
 from .hamming import hamming_score
 from sklearn.metrics import f1_score
 from .bilstm_elmo_word import Elmo_word_model
-from ...preprocessing.text_preprocessing import actual_len
+from ...preprocessing.text_preprocessing import Text_preprocessing
 import numpy as np
 import pickle as pk
 
 
 
-class BiLstm_Elmo(object):
+class Elmo_Word_Model(object):
 
 
     
@@ -24,8 +24,9 @@ class BiLstm_Elmo(object):
         self.X_val   = X_test
         self.y_val   = y_test
         
-        train_len    = actual_len(self.X_train)
-        test_len     = actual_len(self.X_val)
+        self.tp      = Text_preprocessing()
+        train_len    = self.tp.actual_len(self.X_train)
+        test_len     = self.tp.actual_len(self.X_val)
         train_len.extend(test_len)
 
         self.max_len = max(train_len)
@@ -65,7 +66,7 @@ class BiLstm_Elmo(object):
 
         batch_data_j = self.X_train[slice_no * batch_size:(slice_no + 1) * batch_size]
         batch_labels = self.y_train[slice_no * batch_size:(slice_no + 1) * batch_size]
-        batch_seque  = actual_len(batch_data_j)
+        batch_seque  = self.tp.actual_len(batch_data_j)
 
 
         return {'sentenc': np.array(batch_data_j), 'labels': np.array(batch_labels) ,'sequence_len': np.array(batch_seque)}
@@ -77,7 +78,7 @@ class BiLstm_Elmo(object):
 
         batch_data_j = self.X_val[slice_no * batch_size:(slice_no + 1) * batch_size]
         batch_labels = self.y_val[slice_no * batch_size:(slice_no + 1) * batch_size]
-        batch_seque  = actual_len(batch_data_j)
+        batch_seque  = self.tp.actual_len(batch_data_j)
 
 
         return {'sentenc': np.array(batch_data_j), 'labels': np.array(batch_labels) ,'sequence_len': np.array(batch_seque)}
