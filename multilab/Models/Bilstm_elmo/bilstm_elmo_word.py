@@ -33,7 +33,7 @@ class Elmo_word_model(object):
         # one hot labels
         sentences             = tf.placeholder(tf.string, (None,), name='sentences')
         self.targets          = tf.placeholder(tf.int32, [None, None], name='labels' )
-        sequence_length       = tf.placeholder(tf.int32, (None), name='sequence_len')
+        sequence_length       = tf.placeholder(tf.int32, (None,), name='sequence_len')
 
         keep_prob             = tf.placeholder(tf.float32, name='dropout')
 
