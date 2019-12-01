@@ -25,11 +25,8 @@ class Elmo_Word_Model(object):
         self.y_val   = y_test
         
         self.tp      = Text_preprocessing()
-        train_len    = self.tp.actual_len(self.X_train)
-        test_len     = self.tp.actual_len(self.X_val)
-        train_len.extend(test_len)
+        self.max_len = self.tp.max_length(X_train)
 
-        self.max_len = max(train_len)
 
         self.old_configuration = {
                          'no_of_labels'               : 9,
@@ -65,12 +62,10 @@ class Elmo_Word_Model(object):
 
         batch_data_j = self.X_train[slice_no * batch_size:(slice_no + 1) * batch_size]
         batch_labels = self.y_train[slice_no * batch_size:(slice_no + 1) * batch_size]
-        batch_seque  = self.tp.actual_len(batch_data_j)
-        with open('actua_length.pkl','wb') as f:
-            pk.dump(batch_seque,f)
+        batch_data_j, seq_length  = self.tp.pad_sentences(batch_data_j)
 
 
-        return {'sentenc': np.array(batch_data_j), 'labels': np.array(batch_labels) ,'sequence_len': batch_seque}
+        return {'sentenc': np.array(batch_data_j), 'labels': np.array(batch_labels) ,'sequence_len': seq_length}
     
     
     # test data loader
@@ -79,10 +74,10 @@ class Elmo_Word_Model(object):
 
         batch_data_j = self.X_val[slice_no * batch_size:(slice_no + 1) * batch_size]
         batch_labels = self.y_val[slice_no * batch_size:(slice_no + 1) * batch_size]
-        batch_seque  = self.tp.actual_len(batch_data_j)
+        batch_data_j, seq_length  = self.tp.pad_sentences(batch_data_j)
 
 
-        return {'sentenc': np.array(batch_data_j), 'labels': np.array(batch_labels) ,'sequence_len': batch_seque}
+        return {'sentenc': np.array(batch_data_j), 'labels': np.array(batch_labels) ,'sequence_len': seq_length}
     
     
     def evaluate_(self, model, epoch_, batch_size = 120):

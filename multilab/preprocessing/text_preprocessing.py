@@ -307,25 +307,32 @@ class Text_preprocessing(object):
     # pad sentences for elmo word level representation
     # input  : arbitary size of raw sentences
     # output : padded sentences with fixed length 
-    def pad_sentences(self, sentences, sequence_len):
+    def pad_sentences(self, sentences):
+        
 
         padded_sentences = []
         actual_length    = []
+
+        sentences = [seq.split() for seq in sentences]
+        sequence_len = max(list(map(len, sentences)))
+        
+
 
         for sentence in tqdm(sentences):
             if not isinstance(sentence, list):
                 token = nltk.word_tokenize(sentence)
             else:
                 token = sentence
-            
+
             if len(token) < sequence_len:
                 actual_length.append(len(token))
                 token = token + [''] * (sequence_len-len(token))
             else:
                 actual_length.append(len(token))
-            
+
             padded_sentences.append(token)
         return padded_sentences, actual_length
+
 
     # actual length of padded sequences
     def actual_len(self, padded_list):
@@ -335,4 +342,11 @@ class Text_preprocessing(object):
             actual = [sub_ for sub_ in sequence if sub_!='']
             actual_.append(len(actual))
         return actual_
+    
+    # get max length of batch size
+    # input is raw sentences
+    def max_length(self, sequences):
+        actual_ = [len(sequence.split()) for sequence in sequences]
+        return max(actual_)
+
 
