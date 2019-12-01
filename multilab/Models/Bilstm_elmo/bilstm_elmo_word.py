@@ -41,6 +41,19 @@ class BiElmo_model(object):
         module                = hub.Module('https://tfhub.dev/google/elmo/2', trainable = train_elmo )
         embeddings            = module(dict(text=sentences))
         embeddings            = tf.expand_dims(embeddings, axis=1)
+
+
+
+
+
+
+
+
+
+
+
+
+
         # [batch,1,1024]
         # three dim for lstm input
  

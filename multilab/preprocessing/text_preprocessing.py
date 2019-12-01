@@ -304,3 +304,26 @@ class Text_preprocessing(object):
         pd_data['text']  = sentences
         return pd_data
 
+    # pad sentences for elmo word level representation
+    # input  : arbitary size of raw sentences
+    # output : padded sentences with fixed length 
+    def pad_sentences(self, sentences, sequence_len):
+
+        padded_sentences = []
+        actual_length    = []
+
+        for sentence in tqdm(sentences):
+            if not isinstance(sentence, list):
+                token = nltk.word_tokenize(sentence)
+            else:
+                token = sentence
+            
+            if len(token) < sequene_len:
+                actual_length.append(len(token))
+                token = token + [''] * (sequene_len-len(token))
+            else:
+                actual_length.append(len(token))
+            
+            padded_sentences.append(token)
+        return padded_sentences, actual_length
+
