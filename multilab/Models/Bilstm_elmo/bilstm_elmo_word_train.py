@@ -66,9 +66,10 @@ class Elmo_Word_Model(object):
         batch_data_j = self.X_train[slice_no * batch_size:(slice_no + 1) * batch_size]
         batch_labels = self.y_train[slice_no * batch_size:(slice_no + 1) * batch_size]
         batch_seque  = self.tp.actual_len(batch_data_j)
+        print(batch_seque)
 
 
-        return {'sentenc': np.array(batch_data_j), 'labels': np.array(batch_labels) ,'sequence_len': np.array(batch_seque)}
+        return {'sentenc': np.array(batch_data_j), 'labels': np.array(batch_labels) ,'sequence_len': batch_seque}
     
     
     # test data loader
@@ -80,7 +81,7 @@ class Elmo_Word_Model(object):
         batch_seque  = self.tp.actual_len(batch_data_j)
 
 
-        return {'sentenc': np.array(batch_data_j), 'labels': np.array(batch_labels) ,'sequence_len': np.array(batch_seque)}
+        return {'sentenc': np.array(batch_data_j), 'labels': np.array(batch_labels) ,'sequence_len': batch_seque}
     
     
     def evaluate_(self, model, epoch_, batch_size = 120):
