@@ -186,7 +186,7 @@ class Elmo_Word_Model(object):
                        rnn_units                    =   self.old_configuration['rnn_units'],
                        train_elmo                   =   self.old_configuration['train_elmo'],
                        output_type                  =   self.old_configuration['output_type'],
-                        max_sentence_words          =   self.max_len)
+                       max_sentence_words          =   self.max_len)
                        
 
         self.train_model(model)
